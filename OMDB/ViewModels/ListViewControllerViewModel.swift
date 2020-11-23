@@ -41,16 +41,16 @@ class ListViewControllerViewModelImpl: ListViewControllerViewModel {
     do {
       try self.omdbService.searchMovieByTitle(title: text) { movies in
         guard let movies = movies else {
-          self.delegate?.displayError(title: "No Results", message: "There were no results")
+          self.tellDelegateToDisplayError(message: "There were no results")
           return
         }
         self.items = movies.all
         self.tellDelegateToRefreshTableView()
       }
     } catch OMDBServiceError.invalidURL {
-      delegate?.displayError(title: "Error", message: "There was a problem encoding the URL")
+      tellDelegateToDisplayError(message: "There was a problem encoding the URL")
     } catch {
-      delegate?.displayError(title: "Error", message: "There was a problem while fetching results")
+      tellDelegateToDisplayError(message: "There was a problem while fetching results")
     }
   }
 
