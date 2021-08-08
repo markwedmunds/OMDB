@@ -21,7 +21,7 @@ protocol OMDBService {
 
 class OMDBServiceImpl: OMDBService {
   var apiUrl: String = "https://www.omdbapi.com/"
-  var apiKey: String = "c1617ee4"
+  var apiKey: String = "abc123"
   
   func searchMovieByTitle(title: String, onCompletion: @escaping OMDBServiceSearchResponse) throws {
     let searchQuery = try! buildQueryString(title: title)
